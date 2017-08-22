@@ -1,0 +1,42 @@
+{
+  "name": "DailyRoutine",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Łukasz Miśkowiak",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "production": "webpack -p",
+    "server": "nodemon server.js"
+  },
+  "dependencies": {
+    "babel-preset-es2017": "^6.24.1",
+    "body-parser": "^1.17.2",
+    "bootstrap": "4.0.0-alpha.6",
+    "express": "^4.15.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "sqlite3": "^3.1.9"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.5",
+    "eslint": "^4.5.0",
+    "eslint-config-crockford": "^1.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  }
+}

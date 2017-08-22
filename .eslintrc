@@ -1,0 +1,8 @@
+{
+  parser: "babel-eslint",
+  "extends": "crockford",
+  "rules": {
+      "no-undef": 0,
+      "no-underscore-dangle": 0
+  }
+}
