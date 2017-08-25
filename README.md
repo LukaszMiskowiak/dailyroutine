@@ -1,11 +1,17 @@
 # Dailyroutine
 ## Instructions
 **Yarn:**
-*yarn add package.json*
-*yarn server or yarn start*
-*open localhost:8080*
+
+1. *yarn add package.json*
+
+2. *yarn server or yarn start*
+
+3. *open localhost:8080*
 
 **NPM**
-*npm install*
-*npm run server or npm run start*
-*open localhost:8080*
+
+1. *npm install*
+
+2. *npm run server or npm run start*
+
+3. *open localhost:8080*
