@@ -4,6 +4,7 @@ import Current from '../components/Current';
 import Info from '../components/Info';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
+// it is used inside deleteElem and addElem methods
 String.prototype.capitalize = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
@@ -11,7 +12,7 @@ String.prototype.capitalize = function () {
 class Main extends React.Component {
     constructor(props) {
         super(props);
-        // loading data form database
+        // loading data from database
         // using Redux actions to handle it
         async function load() {
             let a = await crud.read('todo'),
@@ -31,6 +32,9 @@ class Main extends React.Component {
         };
     }
 
+    // save current elem to state
+    // type - 'note' / type = 'todo'
+    // i - index of element
     handleCurrentElem(type, i) {
         let elem = this.props[type + 's'][i];
         type === 'todo' && this.setState({
@@ -51,7 +55,7 @@ class Main extends React.Component {
         });
     }
 
-    // check 'checked' value of clicked todo and invert it
+    // check 'checked' value of clicked todo and invert it (0/1)
     handleCheckTodo(i) {
         let id = this.state.todo.id, // taking id from current todo (current is saved in state)
             value = this.state.todo.checked ? 0 : 1;
@@ -60,14 +64,17 @@ class Main extends React.Component {
         this.props.handleCheckTodo(i); // update Redux state
     }
 
+    // delete elem from database and from store aswell
     handleDeleteElem(type) {
         let id = this.state[type].id,
             index = this.props[type + 's'].indexOf(this.state[type]);
 
+        // save to database and to store
         crud.delete(type, id);
         this.props['handleDelete' + type.capitalize()](index); // handleDeleteNote || handleDeleteTodo
     }
 
+    // add elem to database and to store aswell
     handleAddElem(type) {
         let elem = {},
             id = this.props[type + 's'].length ? (this.props[type + 's'][this.props[type + 's'].length - 1].id + 1) : 1; // find id of last elem and add 1 to it
@@ -80,31 +87,37 @@ class Main extends React.Component {
         } else elem.checked = 0;
         elem.id = id;
 
+        // save to database and to store
         crud.create(type, elem.text);
         this.props['handleAdd' + type.capitalize()](elem);
     }
 
+    // save input value to state.value
     handleInputChange(e, type) {
         let value = e.target.value,
             state = this.state.value;
+
+        // update state with value of input
         state[type].text = value;
         this.setState({
             value: state
         });
     }
 
+    // render method, creates table with notes/todos
     renderData(type) {
         return (
             <table className='table'>
                 <tbody>
+                    {/*  map through Redux state.notes or state.todos */}
                     {this.props[type + 's'] && this.props[type + 's'].map((elem, i)=> (
                         <tr key={i}>
                             <td
                                 onMouseOver={()=> {
-                                    this.handleCurrentElem.bind(this)(type, i);
+                                    this.handleCurrentElem.bind(this)(type, i); // using closure for passing params
                                 }}
-                                className={'elem ' + (elem.checked && 'checked')}
-                                onClick={type === 'todo' && (()=> this.handleCheckTodo.bind(this)(i))}
+                                className={'elem ' + (elem.checked && 'checked')} // when it is todo and todo is checked change it's style
+                                onClick={type === 'todo' && (()=> this.handleCheckTodo.bind(this)(i))} // using closure for passing params
                             >
                                 {/* in case of notes i want to display date of note
                                     todos do not have date so it goes to elem.text
@@ -125,9 +138,9 @@ class Main extends React.Component {
                         <td>
                             <input
                                 className='form-control'
-                                onChange={(e)=> this.handleInputChange.bind(this)(e, type)}
-                                placeholder={'Add new' + type}
-                                value={this.state.value[type].text}
+                                onChange={(e)=> this.handleInputChange.bind(this)(e, type)} // using closure for passing params
+                                placeholder={'Add new ' + type}
+                                value={this.state.value[type].text} // value from state
                             />
                         </td>
                         <td className='delete text-center'>

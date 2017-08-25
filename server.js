@@ -21,15 +21,15 @@ db.serialize(()=> {
     db.run('CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY AUTOINCREMENT, text TEXT, date TEXT)');
 
     app.post('/todo-add', (req,res,next)=> {
-        const date = new Date().toString();
-        const stmt = db.prepare('INSERT INTO todos (text, checked) VALUES ($text, $checked)');
+        const date = new Date().toString(),
+            stmt = db.prepare('INSERT INTO todos (text, checked) VALUES ($text, $checked)');
         stmt.run(req.body.text, 0);
         stmt.finalize();
         console.log(req.body);
     });
     app.post('/note-add', (req,res,next)=> {
-        const date = new Date().toString();
-        const stmt = db.prepare('INSERT INTO notes (text, date) VALUES ($text, $date)');
+        const date = new Date().toString(),
+            stmt = db.prepare('INSERT INTO notes (text, date) VALUES ($text, $date)');
         stmt.run(req.body.text, date);
         stmt.finalize();
         console.log(req.body);
@@ -63,17 +63,12 @@ db.serialize(()=> {
     });
 
     app.post('/todo-update', (req,res,next)=> {
-        // there is some problem with server on too many update/read requests
-        console.log('todo updated');
-        console.log(req.body);
-        const stmt = db.prepare('UPDATE todos SET checked = $checked WHERE rowid = ($index)');
+        console.log('todo updated');        const stmt = db.prepare('UPDATE todos SET checked = $checked WHERE rowid = ($index)');
         stmt.run(req.body.value, req.body.id);
         stmt.finalize();
     });
     app.post('/note-update', (req,res,next)=> {
-        // there is some problem with server on too many update/read requests
         console.log('note updated');
-        console.log(req.body);
         const stmt = db.prepare('UPDATE notes SET text = $text WHERE rowid = ($index)');
         stmt.run(req.body.text, req.body.priority, req.body.id);
         stmt.finalize();

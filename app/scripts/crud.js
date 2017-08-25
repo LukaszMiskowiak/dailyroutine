@@ -1,5 +1,5 @@
 // CRUD = Create, Read, Update, Delete
-// IIFE return an object
+// IIFE returns an object
 const crud = (function () {
     const crud = {},
         xhr = new XMLHttpRequest();
@@ -10,6 +10,7 @@ const crud = (function () {
     crud.create = (type, value, date)=> {
         if (typeof type !== 'string' || typeof value !== 'string') throw new Error('Type || value is not a string');
         let vars = date ? ('text' + '=' + value + '&date=' + date) : ('text' + '=' + value);
+
         xhr.open('POST', type + '-add', true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.send(vars);
@@ -19,6 +20,7 @@ const crud = (function () {
         if (typeof type !== 'string') throw new Error('type is not a string');
         return new Promise((resolve, reject)=> {
             xhr.open('GET', type + '-select');
+            // save response to crud.data
             xhr.onload = ()=> resolve(crud.data[type + 's'] = JSON.parse(xhr.responseText));
             xhr.onError = ()=> reject(xhr.statusText);
             xhr.send();
@@ -28,6 +30,7 @@ const crud = (function () {
         if (typeof type !== 'string') throw new Error('Type is not a string');
         if (typeof id !== 'number') throw new Error('id is not a number');
         let vars = 'id=' + id + '&value=' + value;
+
         xhr.open('POST', type + '-update', true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.send(vars);
@@ -36,6 +39,7 @@ const crud = (function () {
         if (typeof type !== 'string') throw new Error('type is not a string');
         if (typeof id !== 'number') throw new Error('id is not a number');
         let vars = 'id=' + id;
+
         xhr.open('POST', type + '-delete', true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.send(vars);
