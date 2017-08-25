@@ -3,8 +3,26 @@
     width: 100%;
     background: grey;
     animation-name: fadeIn;
-    animation-duration: 3s;
-    margin: 2rem 0;
+    animation-duration: 1s;
+    font-weight: 400;
+    box-shadow: 0 0 1rem #eceeef;
+    box-shadow: 0rem 0 1px rgba(0, 0, 0, 0.34);;
+    color: rgba(0, 0, 200, 0.87);
+    /*text-shadow: 0px 0px .1rem rgba(0, 0, 0, 0.54);*/
+    background: white!important;
+    margin-top: 1rem;
+}
+.current:hover {
+    box-shadow: 0rem 4px 8px rgba(0, 0, 0, 0.34);;
+}
+.notes {
+    margin: 3rem 0;
+    padding: 2rem!important;
+    background: none!important;
+}
+.delete {
+    background: white;
+    color: red;
 }
 
 article {
@@ -12,21 +30,62 @@ article {
 }
 
 .elem {
-   transition: color 1s, background 1s;
+   /*transition: color 1s, background 1s;*/
+   color: rgba(0, 0, 0, .34);
 }
 .elem:hover {
-    background: black;
-    color: white;
+    /*background: black;*/
+    /*color: white;*/
+    color: rgba(0, 0, 0, 0.87);;
+}
+.checked {
+  color: rgba(0, 255, 0, .54);
+}
+
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: center;
+}
+
+.panel {
+    animation-name: fadeIn;
+    animation-duration: 3s;
+    background: #eceeef;
+}
+.fa-check,  .fa-plus {
+    color: rgba(0, 255, 0, .5);
+    transition: color .25s;
+}
+.fa-check:hover . .fa-plus:hover {
+    color: rgba(0, 255, 0, 1);
+}
+.fa-times {
+    animation-name: deleteFadeIn;
+    animation-duration: 2s;
+    color: rgba(255, 0, 0, 0.5);
+    transition: color .25s;
+}
+.fa-times:hover {
+    color: rgba(255, 0, 0, 1);
 }
 
 @keyframes fadeIn {
    0% {
-     background: white;
-   }
-   25% {
-     background: black;
+     background: #eceeef;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, .34);;
    }
    100% {
-     background: #eceeef;
+     background: white;
+     box-shadow: 0rem 0 1px rgba(0, 0, 0, 0.34);;
+   }
+}
+@keyframes deleteFadeIn {
+   0% {
+     color: white;
+   }
+   100% {
+     color: rgba(255, 0, 0, 0.5);
    }
 }

@@ -1,7 +1,9 @@
 import React from 'react';
 
+// Current is an card element
+
 const Current = (props)=> (
-    <div className='current jumbotron text-center'>
+    <div className=''>
         {props.elem && props.elem}
     </div>
 );
