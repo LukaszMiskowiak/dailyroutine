@@ -1,8 +1,9 @@
 import React from 'react';
 import crud from '../scripts/crud';
 import Current from '../components/Current';
-import Info from '../components/Info';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import Info from '../components/Info';
+
 
 // it is used inside deleteElem and addElem methods
 String.prototype.capitalize = function () {
@@ -26,9 +27,11 @@ class Main extends React.Component {
             todo: undefined, // this is for saving current (hovered) todo
             // value object is for saving input from user on the run (when adding new elem)
             value: {
-                note: {},
-                todo: {}
-            }
+                note: {}, // note.text - new note text (note.date is added automatically)
+                todo: {}, // todo.text - new todo text
+                edit: {} // edited note object (text and date)
+            },
+            edit: false // show or hide edit panel
         };
     }
 
@@ -41,7 +44,19 @@ class Main extends React.Component {
             todo: elem
         });
         type === 'note' && this.setState({
-            note: elem
+            note: elem,
+            edit: false // get rid of edit panel when changing note
+        });
+    }
+    // toggle on edit
+    handleEdit() {
+        let state = this.state.value; // new state.value
+        // assigning current note properties to new state
+        state.edit.text = this.state.note.text;
+        state.edit.date = this.state.note.date;
+        this.setState({
+            edit: true,
+            value: state
         });
     }
 
@@ -69,6 +84,7 @@ class Main extends React.Component {
         let id = this.state[type].id,
             index = this.props[type + 's'].indexOf(this.state[type]);
 
+        type === 'note' && this.state.edit && this.setState({edit: false});
         // save to database and to store
         crud.delete(type, id);
         this.props['handleDelete' + type.capitalize()](index); // handleDeleteNote || handleDeleteTodo
@@ -87,6 +103,13 @@ class Main extends React.Component {
         } else elem.checked = 0;
         elem.id = id;
 
+        // this.setState({
+        //     value: {
+        //         note: undefined,
+        //         todo:
+        //     }
+        // })
+
         // save to database and to store
         crud.create(type, elem.text);
         this.props['handleAdd' + type.capitalize()](elem);
@@ -96,45 +119,40 @@ class Main extends React.Component {
     handleInputChange(e, type) {
         let value = e.target.value,
             state = this.state.value;
-
         // update state with value of input
-        state[type].text = value;
+        type === 'edit-text' ? // edit panel first input
+        state.edit.text = value
+            : type === 'edit-date' ? // edit panel second input
+            state.edit.date = value
+                : state[type].text = value; // add new todo/note input
+        // saving data from inputs to state
         this.setState({
             value: state
         });
+    }
+    // update edited note elem
+    handleUpdate() {
+        let payload = {}, // payload is an obj with old note object (current one) and the new one (edited one)
+            id = this.state.note.id;
+        payload.old = this.state.note;
+        payload.new = this.state.note;
+        // getting values from inputs
+        payload.new.text = this.state.value.edit.text;
+        payload.new.date = this.state.value.edit.date;
+        // toggling of the panel
+        this.setState({edit: false});
+        // Redux dispatch update and database update
+        this.props.handleUpdateNote(payload);
+        console.log(id);
+        crud.update('note', id, payload.new.text);
     }
 
     // render method, creates table with notes/todos
     renderData(type) {
         return (
-            <table className='table'>
+            <table className='table row'>
                 <tbody>
-                    {/*  map through Redux state.notes or state.todos */}
-                    {this.props[type + 's'] && this.props[type + 's'].map((elem, i)=> (
-                        <tr key={i}>
-                            <td
-                                onMouseOver={()=> {
-                                    this.handleCurrentElem.bind(this)(type, i); // using closure for passing params
-                                }}
-                                className={'elem ' + (elem.checked && 'checked')} // when it is todo and todo is checked change it's style
-                                onClick={type === 'todo' && (()=> this.handleCheckTodo.bind(this)(i))} // using closure for passing params
-                            >
-                                {/* in case of notes i want to display date of note
-                                    todos do not have date so it goes to elem.text
-                                */}
-                                {elem.date || elem.text}
-                            </td>
-                            {/* If elem is not hover render empty cell */}
-                            {(!this.state[type] || this.state[type].id !== elem.id) && (<td />)}
-                            {/* If elem is hovered give it a delete button */}
-                            {(this.state[type] && this.state[type].id === elem.id) && (
-                                <td className='delete text-center'>
-                                    <span onClick={()=> this.handleDeleteElem.bind(this)(type)} className='fa fa-times' />
-                                </td>
-                            )}
-                        </tr>
-                    ))}
-                    <tr>
+                    <tr className='jumbotron'>
                         <td>
                             <input
                                 className='form-control'
@@ -143,10 +161,38 @@ class Main extends React.Component {
                                 value={this.state.value[type].text} // value from state
                             />
                         </td>
-                        <td className='delete text-center'>
+                        <td className='text-center'>
                             <span onClick={()=> this.handleAddElem.bind(this)(type)} className='fa fa-plus'/>
                         </td>
                     </tr>
+                    {/*  map through Redux state.notes or state.todos */}
+                    {this.props[type + 's'] && this.props[type + 's'].map((elem, i)=> (
+                        <tr key={i}>
+                            <td
+                                onMouseOver={()=> {
+                                    this.handleCurrentElem.bind(this)(type, i); // using closure for passing params
+                                }}
+                                className={'elem ' + (elem.checked ? 'elem-checked ' : '') + (type === 'note' ? 'elem-note' : '') } // when it is todo and todo is checked change it's style
+                                onClick={type === 'todo' &&
+                                    (()=> this.handleCheckTodo.bind(this)(i)) ||
+                                    type === 'note' && this.handleEdit.bind(this)
+                                } // using closure for passing params
+                            >
+                                {/* in case of notes i want to display date of note
+                                    todos do not have date so it goes to elem.text
+                                */}
+                                {elem.date && new Date(elem.date).toLocaleDateString()  || elem.text}
+                            </td>
+                            {/* If elem is not hover render empty cell */}
+                            {(!this.state[type] || this.state[type].id !== elem.id) && (<td />)}
+                            {/* If elem is hovered give it a delete button */}
+                            {(this.state[type] && this.state[type].id === elem.id) && (
+                                <td className='text-center'>
+                                    <span onClick={()=> this.handleDeleteElem.bind(this)(type)} className='button-delete fa fa-times' />
+                                </td>
+                            )}
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         );
@@ -155,22 +201,45 @@ class Main extends React.Component {
     render() {
         return (
             <div className='row' onMouseLeave={()=> this.handleMouseOut.bind(this)('note')}>
-                <div className='col-sm-6 row'>
-                    <section className='col-sm-12'>
-                        <Info />
-                    </section>
-                    <section className='col-sm-12 ' onMouseLeave={()=> this.handleMouseOut.bind(this)('todo')}>
-                        {this.renderData('todo')}
-                    </section>
-                </div>
-                <div className='col-sm-6 row'>
-                    <section className='col-sm-12 jumbotron notes'>
+                <section className='col-sm-6 jumbotron panel-notes'>
+                    <div className='float-right'>
                         {this.renderData('note')}
-                    </section>
-                    <section className='col-sm-12 current jumbotron'>
-                        {this.state.note && <Current elem={this.state.note.text}/>}
-                    </section>
-                </div>
+                    </div>
+                </section>
+                <section className='panel-current col-sm-6 jumbotron'>
+                    <ul className='panel-current-nav list-inline'>
+                        {this.props.notes && this.props.notes.map((note, i) => {
+                            if (i < 7) {
+                                return (
+                                    <li key={i}
+                                        className='list-inline-item text-muted'
+                                        onMouseOver={()=> {
+                                            this.handleCurrentElem.bind(this)('note', i); // using closure for passing params
+                                        }}
+                                        onClick={this.handleEdit.bind(this)}
+                                    >
+                                        {(new Date(note.date).getDate()) + ' ' + ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'][new Date(note.date).getMonth()]}
+                                    </li>
+                                );
+                            }
+                        })}
+                    </ul>
+                    <div className='panel-current-display'>
+                        {this.state.edit ?
+                            (<div className='panel-current-edit'>
+                                <textarea onChange={(e)=> this.handleInputChange.bind(this)(e, 'edit-text')} placeholder={this.state.note.text} value={this.state.value.edit.text} className='form-control'/>
+                                <input onChange={(e)=> this.handleInputChange.bind(this)(e, 'edit-date')} placeholder={this.state.note.text} value={this.state.value.edit.date} className='form-control'/>
+                                <button onClick={this.handleUpdate.bind(this)} className='btn btn-success'> Update </button>
+                            </div>)
+                            : this.state.note ?
+                                <Current elem={this.state.note} />
+                                : <Info />
+                        }
+                    </div>
+                </section>
+                <section className='col-sm-6 offset-sm-6 jumbotron panel-todos'>
+                    {this.renderData('todo')}
+                </section>
             </div>
         );
     }

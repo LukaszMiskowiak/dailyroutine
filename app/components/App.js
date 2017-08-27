@@ -1,26 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { loadTodos, checkTodo, deleteTodo, addTodo } from '../actions/todos';
-import { loadNotes, addNote, deleteNote} from '../actions/notes';
-
+import { loadNotes, addNote, deleteNote, updateNote} from '../actions/notes';
+import Info from '../components/Info';
 import crud from '../scripts/crud';
-import Nav from './Nav';
 import Main from '../containers/Main';
 
 class App extends React.Component {
     render() {
         return (
-            <Main
-                notes={this.props.notes}
-                todos={this.props.todos}
-                handleLoadTodos={this.props.loadTodos}
-                handleCheckTodo={this.props.checkTodo}
-                handleDeleteTodo={this.props.deleteTodo}
-                handleAddTodo={this.props.addTodo}
-                handleLoadNotes={this.props.loadNotes}
-                handleAddNote={this.props.addNote}
-                handleDeleteNote={this.props.deleteNote}
-            />
+            <div className='container-fluid col-md-8'>
+                <Main
+                    notes={this.props.notes}
+                    todos={this.props.todos}
+                    handleLoadTodos={this.props.loadTodos}
+                    handleCheckTodo={this.props.checkTodo}
+                    handleDeleteTodo={this.props.deleteTodo}
+                    handleAddTodo={this.props.addTodo}
+                    handleLoadNotes={this.props.loadNotes}
+                    handleAddNote={this.props.addNote}
+                    handleDeleteNote={this.props.deleteNote}
+                    handleUpdateNote={this.props.updateNote}
+                />
+            </div>
         );
     }
 };
@@ -44,6 +46,9 @@ const mapStateToProps = (state)=> {
             },
             addNote: (note)=> {
                 dispatch(addNote(note));
+            },
+            updateNote: (payload)=> {
+                dispatch(updateNote(payload));
             },
             loadTodos: (todos)=> {
                 dispatch(loadTodos(todos));

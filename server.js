@@ -63,14 +63,16 @@ db.serialize(()=> {
     });
 
     app.post('/todo-update', (req,res,next)=> {
-        console.log('todo updated');        const stmt = db.prepare('UPDATE todos SET checked = $checked WHERE rowid = ($index)');
+        console.log('todo updated');
+        const stmt = db.prepare('UPDATE todos SET checked = $checked WHERE rowid = ($index)');
         stmt.run(req.body.value, req.body.id);
         stmt.finalize();
     });
     app.post('/note-update', (req,res,next)=> {
         console.log('note updated');
+        console.log(req.body.value);
         const stmt = db.prepare('UPDATE notes SET text = $text WHERE rowid = ($index)');
-        stmt.run(req.body.text, req.body.priority, req.body.id);
+        stmt.run(req.body.value, req.body.id);
         stmt.finalize();
     });
 });

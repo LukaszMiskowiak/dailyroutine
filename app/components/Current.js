@@ -1,10 +1,8 @@
 import React from 'react';
 
-// Current is an card element
-
 const Current = (props)=> (
-    <div className=''>
-        {props.elem && props.elem}
+    <div className='lead'>
+        {props.elem && props.elem.text}
     </div>
 );
 

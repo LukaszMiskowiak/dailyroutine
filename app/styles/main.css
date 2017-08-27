@@ -1,91 +1,61 @@
-.current {
-    /*height: 15rem;*/
-    width: 100%;
-    background: grey;
-    animation-name: fadeIn;
-    animation-duration: 1s;
-    font-weight: 400;
-    box-shadow: 0 0 1rem #eceeef;
-    box-shadow: 0rem 0 1px rgba(0, 0, 0, 0.34);;
-    color: rgba(0, 0, 200, 0.87);
-    /*text-shadow: 0px 0px .1rem rgba(0, 0, 0, 0.54);*/
-    background: white!important;
-    margin-top: 1rem;
+.panel-todos {
+  background: rgba(255, 255, 255, 1)!important;
+  /*background: rgba(255, 130, 0, .54)!important;*/
 }
-.current:hover {
-    box-shadow: 0rem 4px 8px rgba(0, 0, 0, 0.34);;
+.panel-current {
+  background: rgba(255, 255, 255, 1)!important;
 }
-.notes {
-    margin: 3rem 0;
-    padding: 2rem!important;
-    background: none!important;
+.panel-current-display {
+  background: rgba(0, 0, 255, .54)!important;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.34);
+  padding: 1rem;
 }
-.delete {
-    background: white;
-    color: red;
+.panel-current-display:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.34);
+}
+.panel-current-edit > textarea, .panel-current-edit > input {
+  margin: .5rem auto;
+  background: rgba(0, 0, 255, 0)!important;
+}
+.panel-current-edit > button {
+}
+textarea {
+  min-height: 8rem;
 }
 
-article {
-    margin: 2rem 0;
+.panel-info {
+  background: rgba(255, 255, 255, 1)!important;
+}
+.panel-notes {
+  background: rgba(255, 255, 255, 1)!important;
+}
+.panel-notes-dates > * {
+  padding-left: .5rem;
+}
+.panel-notes-dates>*:first-child {
+  padding-left: 2rem;
+}
+.panel-notes-dates > * {
+  font-size: .75rem;
 }
 
-.elem {
-   /*transition: color 1s, background 1s;*/
-   color: rgba(0, 0, 0, .34);
-}
 .elem:hover {
-    /*background: black;*/
-    /*color: white;*/
-    color: rgba(0, 0, 0, 0.87);;
+  background-color: rgba(0, 255, 0, .54);
+  cursor: pointer;
 }
-.checked {
+.elem-note:hover {
+  background-color: rgba(255, 150, 0, .54);
+}
+.elem-checked {
   color: rgba(0, 255, 0, .54);
 }
-
-.vertical-center {
-    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-    min-height: 100vh; /* These two lines are counted as one :-)       */
-    display: flex;
-    align-items: center;
+.elem-checked:hover {
+  background-color: rgba(0, 0, 0, 1);
 }
 
-.panel {
-    animation-name: fadeIn;
-    animation-duration: 3s;
-    background: #eceeef;
+.button-delete {
+  color: rgba(255, 0, 0, .34);
 }
-.fa-check,  .fa-plus {
-    color: rgba(0, 255, 0, .5);
-    transition: color .25s;
-}
-.fa-check:hover . .fa-plus:hover {
-    color: rgba(0, 255, 0, 1);
-}
-.fa-times {
-    animation-name: deleteFadeIn;
-    animation-duration: 2s;
-    color: rgba(255, 0, 0, 0.5);
-    transition: color .25s;
-}
-.fa-times:hover {
-    color: rgba(255, 0, 0, 1);
-}
-
-@keyframes fadeIn {
-   0% {
-     background: #eceeef;
-     box-shadow: 0 4px 8px rgba(0, 0, 0, .34);;
-   }
-   100% {
-     background: white;
-     box-shadow: 0rem 0 1px rgba(0, 0, 0, 0.34);;
-   }
-}
-@keyframes deleteFadeIn {
-   0% {
-     color: white;
-   }
-   100% {
-     color: rgba(255, 0, 0, 0.5);
-   }
+.button-delete:hover {
+  color: rgba(255, 0, 0, 1);
 }
