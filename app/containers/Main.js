@@ -209,7 +209,7 @@ class Main extends React.Component {
                         handleCheck={(i)=> this.handleCheckTodo.bind(this)(i)}
                         edited={this.state.todo && this.state.todo.id}
                         todos={this.props.todos}
-                        current={this.state.todo}
+                        current={this.state.todo && this.state.todo}
                     />
                     {/* add Todo form */}
                     <ul className='list-inline'>
