@@ -7,8 +7,14 @@
   background: rgba(255, 255, 255, 1)!important;
   padding-bottom: 0!important;
 }
+.panel-current-nav li:first-of-type {
+  margin-left: .25rem;
+}
+.panel-current-nav {
+  font-size: .5rem;
+}
 .panel-current-display {
-  background: rgba(0, 0, 255, .54)!important;
+  /*background: rgba(0, 0, 255, .54)!important;*/
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.34);
   padding: 1rem;
 }
@@ -39,7 +45,7 @@ textarea {
   padding-left: 2rem;
 }
 .panel-notes-dates > * {
-  font-size: .75rem;
+  font-size: .4rem;
 }
 
 .elem:hover {

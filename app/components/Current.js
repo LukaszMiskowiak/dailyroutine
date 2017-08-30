@@ -1,9 +1,14 @@
 import React from 'react';
 
 const Current = (props)=> (
-    <div className='lead'>
-        {props.elem && props.elem.text}
-    </div>
+    <article className='col-sm-12'>
+        <h1>
+            {(new Date(props.elem.date).getDate()) + ' ' + ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'][new Date(props.elem.date).getMonth()]}
+        </h1>
+        <p className='lead text-justify'>
+            {props.elem && props.elem.text}
+        </p>
+    </article>
 );
 
 export default Current;

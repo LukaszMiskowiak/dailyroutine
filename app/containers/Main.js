@@ -3,6 +3,8 @@ import crud from '../scripts/crud';
 import Current from '../components/Current';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import Info from '../components/Info';
+import Todos from '../components/Todos';
+import Notes from '../components/Notes';
 
 
 // it is used inside deleteElem and addElem methods
@@ -31,8 +33,26 @@ class Main extends React.Component {
                 todo: {}, // todo.text - new todo text
                 edit: {} // edited note object (text and date)
             },
+            notes_from: 0, // index of starting point
+            notes_to: 7, // index of ending point
             edit: false // show or hide edit panel
         };
+    }
+
+
+    handleNotesRange(direction) {
+        let num = this.state.notes_from;
+        if (direction === 'left') {
+            this.setState({
+                notes_from: (num - 7),
+                notes_to: num
+            });
+        } else if (direction === 'right')  {
+            this.setState({
+                notes_from: num + 7,
+                notes_to: num + 14
+            });
+        }
     }
 
     // save current elem to state
@@ -102,14 +122,6 @@ class Main extends React.Component {
             elem.date = date;
         } else elem.checked = 0;
         elem.id = id;
-
-        // this.setState({
-        //     value: {
-        //         note: undefined,
-        //         todo:
-        //     }
-        // })
-
         // save to database and to store
         crud.create(type, elem.text);
         this.props['handleAdd' + type.capitalize()](elem);
@@ -143,123 +155,76 @@ class Main extends React.Component {
         this.setState({edit: false});
         // Redux dispatch update and database update
         this.props.handleUpdateNote(payload);
-        console.log(id);
         crud.update('note', id, payload.new.text);
-    }
-
-    // render method, creates table with notes/todos
-    renderData(type) {
-        return (
-            <table className='table' >
-                <tbody>
-                    <tr>
-                        <td>
-                            <input
-                                className='form-control'
-                                onChange={(e)=> this.handleInputChange.bind(this)(e, type)} // using closure for passing params
-                                placeholder={'Add new ' + type}
-                                value={this.state.value[type].text} // value from state
-                            />
-                        </td>
-                        <td className='text-center'>
-                            <span onClick={()=> this.handleAddElem.bind(this)(type)} className='fa fa-plus'/>
-                        </td>
-                    </tr>
-                    {/*  map through Redux state.notes or state.todos */}
-                    {this.props[type + 's'] && this.props[type + 's'].map((elem, i)=> (
-                        <tr key={i}>
-                            <td
-                                onMouseOver={()=> {
-                                    this.handleCurrentElem.bind(this)(type, i); // using closure for passing params
-                                }}
-                                className={'elem ' + (elem.checked ? 'elem-checked ' : (type === 'note' && this.state.note && this.state.note.id === elem.id) ? 'elem-edited ' : '') + (type === 'note' ? 'elem-note' : '') } // when it is todo and todo is checked change it's style
-                                onClick={type === 'todo' &&
-                                    (()=> this.handleCheckTodo.bind(this)(i)) ||
-                                    type === 'note' && this.handleEdit.bind(this)
-                                } // using closure for passing params
-                            >
-                                {/* in case of notes i want to display date of note
-                                    todos do not have date so it goes to elem.text
-                                */}
-                                {elem.date && new Date(elem.date).toLocaleDateString()  || elem.text}
-                            </td>
-                            {/* If elem is not hover render empty cell */}
-                            {(!this.state[type] || this.state[type].id !== elem.id) && (<td />)}
-                            {/* If elem is hovered give it a delete button */}
-                            {(this.state[type] && this.state[type].id === elem.id) && (
-                                <td className='text-center'>
-                                    <span onClick={()=> this.handleDeleteElem.bind(this)(type)} className='button-delete fa fa-times' />
-                                </td>
-                            )}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        );
     }
 
     render() {
         return (
             <div className='row' onMouseLeave={()=> this.handleMouseOut.bind(this)('note')}>
-                <section className='hidden-md-down col-lg-4 jumbotron panel-notes'>
-                    <div className='float-right'>
-                        {this.renderData('note')}
-                    </div>
-                </section>
-                <section className='panel-current col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-0 jumbotron'>
-                    <ul className='panel-current-nav list-inline col-sm-12'>
-                        {this.props.notes && this.props.notes.map((note, i) => {
-                            if (i < 7) {
-                                return (
-                                    <li key={i}
-                                        className={'list-inline-item elem elem-note ' + (this.state.note && this.state.note.id === note.id ? 'elem-edited ' : '')}
-                                        onMouseOver={()=> {
-                                            this.handleCurrentElem.bind(this)('note', i); // using closure for passing params
-                                        }}
-                                        onClick={this.handleEdit.bind(this)}
-                                    >
-                                        {(new Date(note.date).getDate()) + ' ' + ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'][new Date(note.date).getMonth()]}
-                                    </li>
-                                );
-                            }
-                        })}
-                        <li>
-
-                        </li>
-                    </ul>
+                <section className='panel-current col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 jumbotron'>
+                    <Notes
+                        notes={this.props.notes}
+                        note={this.state.note}
+                        from={this.state.notes_from}
+                        to={this.state.notes_to}
+                        handleCurrent={(i)=> this.handleCurrentElem.bind(this)('note', i)}
+                        handleEdit={this.handleEdit.bind(this)}
+                        handleRange={(dir)=> this.handleNotesRange.bind(this)(dir)}
+                    />
                     <div className='panel-current-display col-sm-12' onClick={this.handleEdit.bind(this)}>
+                        {/* if edit is trigerred show it */}
                         {this.state.edit ?
                             (<div className='panel-current-edit'>
                                 <textarea onChange={(e)=> this.handleInputChange.bind(this)(e, 'edit-text')} placeholder={this.state.note.text} value={this.state.value.edit.text} className='form-control'/>
                                 <input onChange={(e)=> this.handleInputChange.bind(this)(e, 'edit-date')} placeholder={this.state.note.text} value={this.state.value.edit.date} className='form-control'/>
                                 <button onClick={this.handleUpdate.bind(this)} className='btn btn-success'> Update </button>
+                                <button onClick={()=> this.handleDeleteElem.bind(this)('note')} className='btn btn-danger'> Delete </button>
                             </div>)
+                            // if note is hovered show it, otherwise show Info component
                             : this.state.note ?
                                 <Current elem={this.state.note}/>
                                 : <Info />
                         }
 
                     </div>
-                    <table className='table hidden-lg-up' >
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <input
-                                        className='form-control'
-                                        onChange={(e)=> this.handleInputChange.bind(this)(e, 'note')} // using closure for passing params
-                                        placeholder={'Add new note'}
-                                        value={this.state.value.note.text} // value from state
-                                    />
-                                </td>
-                                <td className='text-center'>
-                                    <span onClick={()=> this.handleAddElem.bind(this)('note')} className='fa fa-plus'/>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    {/* add note form */}
+                    <ul className='list-inline mt-2'>
+                        <li className='list-inline-item'>
+                            <input
+                                className='form-control'
+                                onChange={(e)=> this.handleInputChange.bind(this)(e, 'note')} // using closure for passing params
+                                placeholder={'Add new note'}
+                                value={this.state.value.note.text} // value from state
+                            />
+                        </li>
+                        <li className='list-inline-item'>
+                            <button onClick={()=> this.handleAddElem.bind(this)('note')} className='btn fa fa-plus'/>
+                        </li>
+                    </ul>
                 </section>
-                <section className='col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-4 jumbotron panel-todos'>
-                    {this.renderData('todo')}
+                <section className='col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 jumbotron panel-todos'>
+                    <Todos
+                        handleDelete={()=> this.handleDeleteElem.bind(this)('todo')}
+                        handleCurrent={(i)=> this.handleCurrentElem.bind(this)('todo', i)}
+                        handleCheck={(i)=> this.handleCheckTodo.bind(this)(i)}
+                        edited={this.state.todo && this.state.todo.id}
+                        todos={this.props.todos}
+                        current={this.state.todo}
+                    />
+                    {/* add Todo form */}
+                    <ul className='list-inline'>
+                        <li className='list-inline-item'>
+                            <input
+                                className='form-control'
+                                onChange={(e)=> this.handleInputChange.bind(this)(e, 'todo')} // using closure for passing params
+                                placeholder={'Add new todo'}
+                                value={this.state.value.todo.text} // value from state
+                            />
+                        </li>
+                        <li className='list-inline-item'>
+                            <button onClick={()=> this.handleAddElem.bind(this)('todo')} className='btn fa fa-plus'/>
+                        </li>
+                    </ul>
                 </section>
             </div>
         );
