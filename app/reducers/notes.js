@@ -1,6 +1,6 @@
 const notes = (state = [], action) => {
     switch (action.type) {
-    // using curly braces to create local scope for let declarations
+    // using curly braces to create block scope for let declarations
     case 'LOAD_NOTES': {
         let notes = action.payload.filter((e)=> e.date);
         console.log(notes);

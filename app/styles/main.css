@@ -1,9 +1,11 @@
 .panel-todos {
   background: rgba(255, 255, 255, 1)!important;
+  padding-top: 0!important;
   /*background: rgba(255, 130, 0, .54)!important;*/
 }
 .panel-current {
   background: rgba(255, 255, 255, 1)!important;
+  padding-bottom: 0!important;
 }
 .panel-current-display {
   background: rgba(0, 0, 255, .54)!important;
@@ -28,6 +30,7 @@ textarea {
 }
 .panel-notes {
   background: rgba(255, 255, 255, 1)!important;
+  padding-bottom: 0!important;
 }
 .panel-notes-dates > * {
   padding-left: .5rem;
@@ -40,17 +43,24 @@ textarea {
 }
 
 .elem:hover {
-  background-color: rgba(0, 255, 0, .54);
+  background-color: rgba(0, 255, 0, .34);
   cursor: pointer;
 }
 .elem-note:hover {
-  background-color: rgba(255, 150, 0, .54);
+  background-color: rgba(255, 150, 0, .34);
 }
 .elem-checked {
   color: rgba(0, 255, 0, .54);
 }
 .elem-checked:hover {
-  background-color: rgba(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, .34);
+}
+.elem-edited {
+  /*background-color: rgba(255, 150, 0, .54);*/
+  color: rgba(0, 0, 0, 0.34);
+}
+.elem-edited:hover {
+  /*background-color: rgba(255, 150, 0, .54);*/
 }
 
 .button-delete {

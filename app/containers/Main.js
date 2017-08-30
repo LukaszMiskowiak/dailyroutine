@@ -150,9 +150,9 @@ class Main extends React.Component {
     // render method, creates table with notes/todos
     renderData(type) {
         return (
-            <table className='table row'>
+            <table className='table' >
                 <tbody>
-                    <tr className='jumbotron'>
+                    <tr>
                         <td>
                             <input
                                 className='form-control'
@@ -172,7 +172,7 @@ class Main extends React.Component {
                                 onMouseOver={()=> {
                                     this.handleCurrentElem.bind(this)(type, i); // using closure for passing params
                                 }}
-                                className={'elem ' + (elem.checked ? 'elem-checked ' : '') + (type === 'note' ? 'elem-note' : '') } // when it is todo and todo is checked change it's style
+                                className={'elem ' + (elem.checked ? 'elem-checked ' : (type === 'note' && this.state.note && this.state.note.id === elem.id) ? 'elem-edited ' : '') + (type === 'note' ? 'elem-note' : '') } // when it is todo and todo is checked change it's style
                                 onClick={type === 'todo' &&
                                     (()=> this.handleCheckTodo.bind(this)(i)) ||
                                     type === 'note' && this.handleEdit.bind(this)
@@ -201,18 +201,18 @@ class Main extends React.Component {
     render() {
         return (
             <div className='row' onMouseLeave={()=> this.handleMouseOut.bind(this)('note')}>
-                <section className='col-sm-6 jumbotron panel-notes'>
+                <section className='hidden-md-down col-lg-4 jumbotron panel-notes'>
                     <div className='float-right'>
                         {this.renderData('note')}
                     </div>
                 </section>
-                <section className='panel-current col-sm-6 jumbotron'>
-                    <ul className='panel-current-nav list-inline'>
+                <section className='panel-current col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-0 jumbotron'>
+                    <ul className='panel-current-nav list-inline col-sm-12'>
                         {this.props.notes && this.props.notes.map((note, i) => {
                             if (i < 7) {
                                 return (
                                     <li key={i}
-                                        className='list-inline-item text-muted'
+                                        className={'list-inline-item elem elem-note ' + (this.state.note && this.state.note.id === note.id ? 'elem-edited ' : '')}
                                         onMouseOver={()=> {
                                             this.handleCurrentElem.bind(this)('note', i); // using closure for passing params
                                         }}
@@ -223,8 +223,11 @@ class Main extends React.Component {
                                 );
                             }
                         })}
+                        <li>
+
+                        </li>
                     </ul>
-                    <div className='panel-current-display'>
+                    <div className='panel-current-display col-sm-12' onClick={this.handleEdit.bind(this)}>
                         {this.state.edit ?
                             (<div className='panel-current-edit'>
                                 <textarea onChange={(e)=> this.handleInputChange.bind(this)(e, 'edit-text')} placeholder={this.state.note.text} value={this.state.value.edit.text} className='form-control'/>
@@ -232,12 +235,30 @@ class Main extends React.Component {
                                 <button onClick={this.handleUpdate.bind(this)} className='btn btn-success'> Update </button>
                             </div>)
                             : this.state.note ?
-                                <Current elem={this.state.note} />
+                                <Current elem={this.state.note}/>
                                 : <Info />
                         }
+
                     </div>
+                    <table className='table hidden-lg-up' >
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input
+                                        className='form-control'
+                                        onChange={(e)=> this.handleInputChange.bind(this)(e, 'note')} // using closure for passing params
+                                        placeholder={'Add new note'}
+                                        value={this.state.value.note.text} // value from state
+                                    />
+                                </td>
+                                <td className='text-center'>
+                                    <span onClick={()=> this.handleAddElem.bind(this)('note')} className='fa fa-plus'/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </section>
-                <section className='col-sm-6 offset-sm-6 jumbotron panel-todos'>
+                <section className='col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-4 jumbotron panel-todos'>
                     {this.renderData('todo')}
                 </section>
             </div>

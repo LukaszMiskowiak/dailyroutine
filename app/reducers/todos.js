@@ -1,6 +1,6 @@
 const todos = (state = [], action) => {
     switch (action.type) {
-    // using curly braces to create local scope for let declarations
+    // using curly braces to create block scope for let declarations
     case 'LOAD_TODOS': {
         return state = Object.assign([], action.payload); // save new state
         break;
