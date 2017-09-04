@@ -185,7 +185,7 @@ module.exports = reactProdInvariant;
 
 
 
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(7);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -583,6 +583,16 @@ module.exports = ExecutionEnvironment;
 "use strict";
 
 
+module.exports = __webpack_require__(16);
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -619,16 +629,6 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(16);
-
 
 /***/ }),
 /* 8 */
@@ -936,7 +936,7 @@ var _assign = __webpack_require__(3);
 
 var PooledClass = __webpack_require__(12);
 
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(7);
 var warning = __webpack_require__(2);
 
 var didWarnForAddedNewProperty = false;
@@ -5485,7 +5485,7 @@ module.exports = ReactUpdateQueue;
 
 var _assign = __webpack_require__(3);
 
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(7);
 var warning = __webpack_require__(2);
 
 var validateDOMNesting = emptyFunction;
@@ -8673,7 +8673,7 @@ module.exports = ReactComponentTreeHook;
  * @typechecks
  */
 
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(7);
 
 /**
  * Upstream version of event listener. Does not take into account specific
@@ -9888,7 +9888,7 @@ var storeShape = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.shape({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_Subscription__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_PropTypes__ = __webpack_require__(88);
@@ -10281,7 +10281,7 @@ function verifyPlainObject(value, displayName, methodName) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 
 
@@ -10295,7 +10295,7 @@ const Info = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'p',
-        { className: 'lead text-justify' },
+        { className: '' },
         'Hover on list elements on the right to see details about them, click on the todo element to check it, have fun in using this application!'
     )
 );
@@ -10382,7 +10382,7 @@ exports.__esModule = true;
 exports.nameShape = undefined;
 exports.transitionTimeout = transitionTimeout;
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -10434,20 +10434,20 @@ var nameShape = exports.nameShape = _propTypes2.default.oneOfType([_propTypes2.d
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_dom__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reducers__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reducers__ = __webpack_require__(233);
 
 
 
 
 
-__webpack_require__(234);
+__webpack_require__(236);
 
 const initialState = {
-    notes: [{ text: 'First Note', date: 'Wed Jul 26 2017 00:00:00 GMT+0200 (CEST)', id: 1 }, { text: 'Second note', date: 'Sat Aug 26 2017 20:02:31 GMT+0200 (CEST)', id: 2 }, { text: 'Third note, a little bit longer one', date: 'Thu Oct 26 2017 00:00:00 GMT+0200 (CEST)', id: 3 }, { text: 'fourth note, again a little bit longer one, even longer than the previous one', date: 'Sun Nov 26 2017 00:00:00 GMT+0100 (CET)', id: 4 }, { text: 'So I spent over 9 hours on this project today... I`ve created whole crud system, server in express, database in SQLite3. What is more I have used Bootstrap 4 and I have written some front-end in React and Redux. Well... Today was a good day.', date: 'Tue Dec 26 2017 00:00:00 GMT+0100 (CET)', id: 5 }],
+    notes: [{ text: 'First Note', date: 'Fri Aug 25 2017 00:00:00 GMT+0200 (CEST)', id: 1 }, { text: 'Second note', date: 'Sat Aug 26 2017 20:02:31 GMT+0200 (CEST)', id: 2 }, { text: 'Third note, a little bit longer one', date: 'Sun Aug 27 2017 00:00:00 GMT+0200 (CEST)', id: 3 }, { text: 'fourth note, again a little bit longer one, even longer than the previous one', date: 'Mon Aug 28 2017 00:00:00 GMT+0100 (CET)', id: 4 }, { text: 'So I spent over 9 hours on this project today... I`ve created whole crud system, server in express, database in SQLite3. What is more I have used Bootstrap 4 and I have written some front-end in React and Redux. Well... Today was a good day.', date: 'Tue Aug 29 2017 00:00:00 GMT+0100 (CET)', id: 5 }, { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', date: 'Wed Aug 30 2017 00:00:00 GMT+0100 (CET)', id: 6 }, { text: 'Fusce non erat non lorem efficitur lobortis.', date: 'Thu Aug 31 2017 00:00:00 GMT+0100 (CET)', id: 7 }, { text: 'Vivamus vehicula libero sit amet lacus sollicitudin bibendum.', date: 'Thu Aug 24 2017 00:00:00 GMT+0100 (CET)', id: 8 }, { text: 'Nunc dignissim eros a pellentesque sodales.', date: 'Wed Aug 23 2017 00:00:00 GMT+0100 (CET)', id: 9 }, { text: 'In rutrum lectus tincidunt risus accumsan dignissim.', date: 'Tue Aug 22 2017 00:00:00 GMT+0100 (CET)', id: 10 }, { text: 'Sed rutrum metus at libero lacinia vehicula.', date: 'Wed Aug 29 2017 00:00:00 GMT+0100 (CET)', id: 11 }, { text: 'Aliquam lobortis erat sit amet lorem semper egestas.', date: 'Mon Aug 21 2017 00:00:00 GMT+0100 (CET)', id: 12 }, { text: 'Curabitur posuere ex sed eros dictum, viverra tempor enim viverra.', date: 'Sun Aug 20 2017 00:00:00 GMT+0100 (CET)', id: 13 }, { text: 'Sed vel tortor ut felis pulvinar faucibus.', date: 'Sat Aug 19 2017 00:00:00 GMT+0100 (CET)', id: 14 }, { text: 'Maecenas vehicula mi a neque volutpat, quis eleifend neque consequat.', date: 'Fri Aug 18 2017 00:00:00 GMT+0100 (CET)', id: 15 }, { text: 'Nunc ultrices arcu a arcu ornare interdum ut et arcu.', date: 'Thur Aug 17 2017 00:00:00 GMT+0100 (CET)', id: 16 }, { text: 'Morbi congue purus nec ornare tincidunt.', date: 'Wed Aug 16 2017 00:00:00 GMT+0100 (CET)', id: 17 }, { text: 'Vestibulum faucibus felis nec purus ultrices, ut tristique enim feugiat.', date: 'Tue Aug 15 2017 00:00:00 GMT+0100 (CET)', id: 18 }, { text: 'Aliquam elementum erat a eros viverra, eu faucibus velit fringilla.', date: 'Mon Aug 14 2017 00:00:00 GMT+0100 (CET)', id: 19 }],
     todos: [{ text: 'Buy sugar', checked: 0, id: 0 }, { text: 'Buy Milk', checked: 0, id: 1 }, { text: 'Do something else', checked: 0, id: 2 }, { text: 'Style this Single Page Application', checked: 0, id: 3 }, { text: 'Create form to make adding elements possiblle', checked: 0, id: 4 }, { text: 'Get some rest', checked: 0, id: 5 }]
 },
 
@@ -12254,7 +12254,7 @@ var DOMLazyTree = __webpack_require__(15);
 var ExecutionEnvironment = __webpack_require__(5);
 
 var createNodesFromMarkup = __webpack_require__(112);
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(7);
 var invariant = __webpack_require__(0);
 
 var Danger = {
@@ -12682,7 +12682,7 @@ var ReactInstrumentation = __webpack_require__(8);
 var ReactMultiChild = __webpack_require__(146);
 var ReactServerRenderingTransaction = __webpack_require__(153);
 
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(7);
 var escapeTextContentForBrowser = __webpack_require__(27);
 var invariant = __webpack_require__(0);
 var isEventSupported = __webpack_require__(34);
@@ -14692,7 +14692,7 @@ module.exports = ReactPropTypesSecret;
 
 
 
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(7);
 var invariant = __webpack_require__(0);
 var warning = __webpack_require__(2);
 
@@ -15353,7 +15353,7 @@ module.exports = lowPriorityWarning;
 var PooledClass = __webpack_require__(134);
 var ReactElement = __webpack_require__(17);
 
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(7);
 var traverseAllChildren = __webpack_require__(135);
 
 var twoArgumentPooler = PooledClass.twoArgumentPooler;
@@ -17423,7 +17423,7 @@ var ReactCurrentOwner = __webpack_require__(11);
 var ReactReconciler = __webpack_require__(14);
 var ReactChildReconciler = __webpack_require__(147);
 
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(7);
 var flattenChildren = __webpack_require__(152);
 var invariant = __webpack_require__(0);
 
@@ -19724,7 +19724,7 @@ var _assign = __webpack_require__(3);
 var ReactUpdates = __webpack_require__(9);
 var Transaction = __webpack_require__(24);
 
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(7);
 
 var RESET_BATCHED_UPDATES = {
   initialize: emptyFunction,
@@ -21137,7 +21137,7 @@ var SyntheticTransitionEvent = __webpack_require__(178);
 var SyntheticUIEvent = __webpack_require__(21);
 var SyntheticWheelEvent = __webpack_require__(179);
 
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(7);
 var getEventCharCode = __webpack_require__(46);
 var invariant = __webpack_require__(0);
 
@@ -22706,7 +22706,7 @@ function applyMiddleware() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_todos__ = __webpack_require__(216);
@@ -22726,7 +22726,7 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     render() {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'container-fluid col-md-8' },
+            { className: 'container-fluid col-sm-12 col-lg-10 col-xl-8' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__containers_Main__["a" /* default */], {
                 notes: this.props.notes,
                 todos: this.props.todos,
@@ -22806,7 +22806,7 @@ const mapStateToProps = state => {
 
 "use strict";
 /* unused harmony export createProvider */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
@@ -22901,7 +22901,7 @@ function createProvider() {
 
 
 
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(7);
 var invariant = __webpack_require__(0);
 var ReactPropTypesSecret = __webpack_require__(65);
 
@@ -23656,14 +23656,18 @@ const loadNotes = payload => {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__scripts_crud__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Current__ = __webpack_require__(219);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_transition_group_CSSTransitionGroup__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_transition_group_CSSTransitionGroup___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_transition_group_CSSTransitionGroup__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Info__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Todos__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Notes__ = __webpack_require__(232);
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+
 
 
 
@@ -23704,8 +23708,25 @@ class Main extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
                 todo: {}, // todo.text - new todo text
                 edit: {} // edited note object (text and date)
             },
+            notes_from: 0, // index of starting point
+            notes_to: 7, // index of ending point
             edit: false // show or hide edit panel
         };
+    }
+
+    handleNotesRange(direction) {
+        let num = this.state.notes_from;
+        if (direction === 'left') {
+            this.setState({
+                notes_from: num - 7,
+                notes_to: num
+            });
+        } else if (direction === 'right') {
+            this.setState({
+                notes_from: num + 7,
+                notes_to: num + 14
+            });
+        }
     }
 
     // save current elem to state
@@ -23776,14 +23797,6 @@ class Main extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
             elem.date = date;
         } else elem.checked = 0;
         elem.id = id;
-
-        // this.setState({
-        //     value: {
-        //         note: undefined,
-        //         todo:
-        //     }
-        // })
-
         // save to database and to store
         __WEBPACK_IMPORTED_MODULE_1__scripts_crud__["a" /* default */].create(type, elem.text);
         this.props['handleAdd' + type.capitalize()](elem);
@@ -23816,60 +23829,7 @@ class Main extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         this.setState({ edit: false });
         // Redux dispatch update and database update
         this.props.handleUpdateNote(payload);
-        console.log(id);
         __WEBPACK_IMPORTED_MODULE_1__scripts_crud__["a" /* default */].update('note', id, payload.new.text);
-    }
-
-    // render method, creates table with notes/todos
-    renderData(type) {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'table',
-            { className: 'table row' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'tbody',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'tr',
-                    { className: 'jumbotron' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'td',
-                        null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                            className: 'form-control',
-                            onChange: e => this.handleInputChange.bind(this)(e, type) // using closure for passing params
-                            , placeholder: 'Add new ' + type,
-                            value: this.state.value[type].text // value from state
-                        })
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'td',
-                        { className: 'text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { onClick: () => this.handleAddElem.bind(this)(type), className: 'fa fa-plus' })
-                    )
-                ),
-                this.props[type + 's'] && this.props[type + 's'].map((elem, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'tr',
-                    { key: i },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'td',
-                        {
-                            onMouseOver: () => {
-                                this.handleCurrentElem.bind(this)(type, i); // using closure for passing params
-                            },
-                            className: 'elem ' + (elem.checked ? 'elem-checked ' : '') + (type === 'note' ? 'elem-note' : '') // when it is todo and todo is checked change it's style
-                            , onClick: type === 'todo' && (() => this.handleCheckTodo.bind(this)(i)) || type === 'note' && this.handleEdit.bind(this) // using closure for passing params
-                        },
-                        elem.date && new Date(elem.date).toLocaleDateString() || elem.text
-                    ),
-                    (!this.state[type] || this.state[type].id !== elem.id) && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('td', null),
-                    this.state[type] && this.state[type].id === elem.id && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'td',
-                        { className: 'text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { onClick: () => this.handleDeleteElem.bind(this)(type), className: 'button-delete fa fa-times' })
-                    )
-                ))
-            )
-        );
     }
 
     render() {
@@ -23878,55 +23838,88 @@ class Main extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
             { className: 'row', onMouseLeave: () => this.handleMouseOut.bind(this)('note') },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'section',
-                { className: 'col-sm-6 jumbotron panel-notes' },
+                { className: 'panel-current col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2  jumbotron' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Notes__["a" /* default */], {
+                    notes: this.props.notes,
+                    note: this.state.note,
+                    from: this.state.notes_from,
+                    to: this.state.notes_to,
+                    handleCurrent: i => this.handleCurrentElem.bind(this)('note', i),
+                    handleEdit: this.handleEdit.bind(this),
+                    handleRange: dir => this.handleNotesRange.bind(this)(dir)
+                }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'float-right' },
-                    this.renderData('note')
-                )
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'section',
-                { className: 'panel-current col-sm-6 jumbotron' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'ul',
-                    { className: 'panel-current-nav list-inline' },
-                    this.props.notes && this.props.notes.map((note, i) => {
-                        if (i < 7) {
-                            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'li',
-                                { key: i,
-                                    className: 'list-inline-item text-muted',
-                                    onMouseOver: () => {
-                                        this.handleCurrentElem.bind(this)('note', i); // using closure for passing params
-                                    },
-                                    onClick: this.handleEdit.bind(this)
-                                },
-                                new Date(note.date).getDate() + ' ' + ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'][new Date(note.date).getMonth()]
-                            );
-                        }
-                    })
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'panel-current-display' },
+                    { className: 'panel-current-display col-sm-12', onClick: this.handleEdit.bind(this) },
                     this.state.edit ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'panel-current-edit' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { onChange: e => this.handleInputChange.bind(this)(e, 'edit-text'), placeholder: this.state.note.text, value: this.state.value.edit.text, className: 'form-control' }),
+                        { className: 'col-sm-12 panel-current-edit' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: e => this.handleInputChange.bind(this)(e, 'edit-date'), placeholder: this.state.note.text, value: this.state.value.edit.date, className: 'form-control' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { onChange: e => this.handleInputChange.bind(this)(e, 'edit-text'), placeholder: this.state.note.text, value: this.state.value.edit.text, className: 'form-control' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'button',
-                            { onClick: this.handleUpdate.bind(this), className: 'btn btn-success' },
+                            { onClick: this.handleUpdate.bind(this), className: 'btn' },
                             ' Update '
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'button',
+                            { onClick: () => this.handleDeleteElem.bind(this)('note'), className: 'btn' },
+                            ' Delete '
                         )
-                    ) : this.state.note ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Current__["a" /* default */], { elem: this.state.note }) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Info__["a" /* default */], null)
+                    ) :
+                    // if note is hovered show it, otherwise show Info component
+                    this.state.note ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Current__["a" /* default */], { elem: this.state.note }) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Info__["a" /* default */], null)
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'ul',
+                    { className: 'list-inline mt-2' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'li',
+                        { className: 'list-inline-item' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                            className: 'form-control input-shadowed',
+                            onChange: e => this.handleInputChange.bind(this)(e, 'note') // using closure for passing params
+                            , placeholder: 'Add new note',
+                            value: this.state.value.note.text // value from state
+                        })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'li',
+                        { className: 'list-inline-item' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('button', { onClick: () => this.handleAddElem.bind(this)('note'), className: 'btn-circled btn fa fa-plus' })
+                    )
                 )
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'section',
-                { className: 'col-sm-6 offset-sm-6 jumbotron panel-todos' },
-                this.renderData('todo')
+                { className: 'col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 jumbotron panel-todos' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_Todos__["a" /* default */], {
+                    handleDelete: () => this.handleDeleteElem.bind(this)('todo'),
+                    handleCurrent: i => this.handleCurrentElem.bind(this)('todo', i),
+                    handleCheck: i => this.handleCheckTodo.bind(this)(i),
+                    edited: this.state.todo && this.state.todo.id,
+                    todos: this.props.todos,
+                    current: this.state.todo && this.state.todo
+                }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'ul',
+                    { className: 'list-inline' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'li',
+                        { className: 'list-inline-item' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                            className: 'form-control input-shadowed',
+                            onChange: e => this.handleInputChange.bind(this)(e, 'todo') // using closure for passing params
+                            , placeholder: 'Add new todo',
+                            value: this.state.value.todo.text // value from state
+                        })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'li',
+                        { className: 'list-inline-item' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('button', { onClick: () => this.handleAddElem.bind(this)('todo'), className: 'btn-circled btn fa fa-plus' })
+                    )
+                )
             )
         );
     }
@@ -23939,14 +23932,23 @@ class Main extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 
 
 const Current = props => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'div',
-    { className: 'lead' },
-    props.elem && props.elem.text
+    'article',
+    { className: 'col-sm-12' },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'h1',
+        { className: 'note-date' },
+        new Date(props.elem.date).getDate() + ' ' + ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'][new Date(props.elem.date).getMonth()]
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'p',
+        { className: 'note-text' },
+        props.elem && props.elem.text
+    )
 );
 
 /* harmony default export */ __webpack_exports__["a"] = (Current);
@@ -23962,7 +23964,7 @@ exports.__esModule = true;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -24066,7 +24068,7 @@ var _chainFunction = __webpack_require__(222);
 
 var _chainFunction2 = _interopRequireDefault(_chainFunction);
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -24430,7 +24432,7 @@ exports.__esModule = true;
 exports.getChildMapping = getChildMapping;
 exports.mergeChildMappings = mergeChildMappings;
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(6);
 
 /**
  * Given `this.props.children`, return an object mapping key to child.
@@ -24541,7 +24543,7 @@ var _requestAnimationFrame2 = _interopRequireDefault(_requestAnimationFrame);
 
 var _properties = __webpack_require__(230);
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -24981,9 +24983,84 @@ function getTransitionProperties() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+const Todos = props => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'table',
+    { className: 'table' },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'tbody',
+        null,
+        props.todos && props.todos.map((elem, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'tr',
+            {
+                onMouseOver: () => props.handleCurrent(i),
+                key: i,
+                className: 'elem elem-todo text-justify ' + (elem.checked && 'elem-checked')
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'td',
+                { onClick: () => props.handleCheck(i) },
+                elem.text
+            ),
+
+            // show delete button next to hovered elem (current-hovered)
+            props.current && (props.current.id !== elem.id ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('td', null) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'td',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { onClick: props.handleDelete, className: 'button-delete fa fa-times' })
+            ))
+        ))
+    )
+);
+
+/* harmony default export */ __webpack_exports__["a"] = (Todos);
+
+/***/ }),
+/* 232 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+const Notes = props => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'ul',
+    { className: 'panel-current-nav list-inline col-sm-12 d-flex justify-content-center flex-row text-center' },
+    props.from > 0 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { onClick: () => props.handleRange('left'), className: 'justify-content-start fa arrow fa-toggle-left mt-1' }) || __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'justify-content-start' }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'justify-content-between ' },
+        props.notes && props.notes.map((note, i) => {
+            if (props.from <= i && i < props.to) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'li',
+                    { key: i,
+                        className: 'list-inline-item elem elem-note ' + (props.note && props.note.id === note.id ? 'elem-edited ' : ''),
+                        onMouseOver: () => props.handleCurrent(i),
+                        onClick: props.handleEdit
+                    },
+                    new Date(note.date).getDate() + ' ' + ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'][new Date(note.date).getMonth()]
+                );
+            }
+        })
+    ),
+    props.to < props.notes.length && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { onClick: () => props.handleRange('right'), className: 'justify-content-end fa arrow fa-toggle-right mt-1' }) || __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'justify-content-end' })
+);
+
+/* harmony default export */ __webpack_exports__["a"] = (Notes);
+
+/***/ }),
+/* 233 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__todos__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notes__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__todos__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notes__ = __webpack_require__(235);
 
 
 
@@ -24996,13 +25073,13 @@ const reducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["b" /* combineReduce
 /* harmony default export */ __webpack_exports__["a"] = (reducers);
 
 /***/ }),
-/* 232 */
+/* 234 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 const todos = (state = [], action) => {
     switch (action.type) {
-        // using curly braces to create local scope for let declarations
+        // using curly braces to create block scope for let declarations
         case 'LOAD_TODOS':
             {
                 return state = Object.assign([], action.payload); // save new state
@@ -25039,13 +25116,13 @@ const todos = (state = [], action) => {
 /* harmony default export */ __webpack_exports__["a"] = (todos);
 
 /***/ }),
-/* 233 */
+/* 235 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 const notes = (state = [], action) => {
     switch (action.type) {
-        // using curly braces to create local scope for let declarations
+        // using curly braces to create block scope for let declarations
         case 'LOAD_NOTES':
             {
                 let notes = action.payload.filter(e => e.date);
@@ -25083,13 +25160,13 @@ const notes = (state = [], action) => {
 /* harmony default export */ __webpack_exports__["a"] = (notes);
 
 /***/ }),
-/* 234 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(235);
+var content = __webpack_require__(237);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -25097,7 +25174,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(237)(content, options);
+var update = __webpack_require__(239)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -25114,21 +25191,21 @@ if(false) {
 }
 
 /***/ }),
-/* 235 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(236)(undefined);
+exports = module.exports = __webpack_require__(238)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, ".panel-current,.panel-todos{background:#fff!important}.panel-current-display{background:rgba(0,0,255,.54)!important;box-shadow:0 0 2px rgba(0,0,0,.34);padding:1rem}.panel-current-display:hover{box-shadow:0 4px 8px rgba(0,0,0,.34)}.panel-current-edit>input,.panel-current-edit>textarea{margin:.5rem auto;background:rgba(0,0,255,0)!important}textarea{min-height:8rem}.panel-info,.panel-notes{background:#fff!important}.panel-notes-dates>*{padding-left:.5rem}.panel-notes-dates>:first-child{padding-left:2rem}.panel-notes-dates>*{font-size:.75rem}.elem:hover{background-color:rgba(0,255,0,.54);cursor:pointer}.elem-note:hover{background-color:rgba(255,150,0,.54)}.elem-checked{color:rgba(0,255,0,.54)}.elem-checked:hover{background-color:#000}.button-delete{color:rgba(255,0,0,.34)}.button-delete:hover{color:red}", ""]);
+exports.push([module.i, ".panel-current-nav{font-size:1rem}.panel-current-display{box-shadow:0 0 8px rgba(0,0,0,.34);padding:1rem}.panel-current-display:hover{box-shadow:0 8px 16px rgba(0,0,0,.34)}.panel-current{background:#fff!important;padding-bottom:0!important}.panel-current-edit>input,.panel-current-edit>textarea{border:none;padding:0!important}.panel-current-edit>textarea{min-height:7rem;color:rgba(0,50,50,.87);font-weight:300;font-size:1.25rem;margin-top:.5rem;font-family:inherit}.panel-current-edit>input{color:rgba(0,50,50,.54);font-weight:600;font-size:1rem;font-family:inherit}.panel-info{background:#fff!important}article>h1{font-weight:600;font-size:2rem}article>h1,article>p{color:rgba(0,50,50,.87)}article>p{font-weight:300;font-size:1.25rem}.panel-todos{background:#fff!important;padding-top:0!important}.elem:hover{cursor:pointer}.elem-note{color:rgba(0,125,125,.87);font-weight:400;font-size:.75rem}.elem-edited,.elem-note:hover{color:rgba(0,200,200,.87)}.elem-todo{color:rgba(0,50,50,.87);font-weight:300;transition:color .25s}.elem-checked,.elem-todo:hover{color:rgba(0,125,75,.87)}.elem-checked{transition:color .25s}.elem-checked:hover{color:rgba(0,50,50,.87)}.fa-toggle-right{margin-left:1rem}.fa-toggle-left{margin-right:1rem}.note-date{color:rgba(0,50,50,.54);font-weight:600;font-size:1rem}.note-text{color:rgba(0,50,50,.87);font-weight:300;font-size:1.25rem}.btn,.fa{color:rgba(0,125,125,.87)}.btn:hover,.fa:hover{color:rgba(0,200,200,.87)}.btn{background:none}.btn-circled{background:#fff;border-radius:2rem!important;box-shadow:0 0 2px rgba(0,0,0,.34);box-shadow:0 0 4px rgba(0,0,0,.34);width:3rem;height:3rem}.btn-circled:hover{box-shadow:0 0 2px rgba(0,0,0,.34);box-shadow:0 4px 8px rgba(0,0,0,.34)}.input-shadowed{box-shadow:0 0 2px rgba(0,0,0,.34);border:none!important}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 236 */
+/* 238 */
 /***/ (function(module, exports) {
 
 /*
@@ -25210,7 +25287,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 237 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -25256,7 +25333,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(238);
+var	fixUrls = __webpack_require__(240);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -25569,7 +25646,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 238 */
+/* 240 */
 /***/ (function(module, exports) {
 
 

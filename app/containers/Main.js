@@ -161,7 +161,7 @@ class Main extends React.Component {
     render() {
         return (
             <div className='row' onMouseLeave={()=> this.handleMouseOut.bind(this)('note')}>
-                <section className='panel-current col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 jumbotron'>
+                <section className='panel-current col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2  jumbotron'>
                     <Notes
                         notes={this.props.notes}
                         note={this.state.note}
@@ -174,11 +174,11 @@ class Main extends React.Component {
                     <div className='panel-current-display col-sm-12' onClick={this.handleEdit.bind(this)}>
                         {/* if edit is trigerred show it */}
                         {this.state.edit ?
-                            (<div className='panel-current-edit'>
-                                <textarea onChange={(e)=> this.handleInputChange.bind(this)(e, 'edit-text')} placeholder={this.state.note.text} value={this.state.value.edit.text} className='form-control'/>
+                            (<div className='col-sm-12 panel-current-edit'>
                                 <input onChange={(e)=> this.handleInputChange.bind(this)(e, 'edit-date')} placeholder={this.state.note.text} value={this.state.value.edit.date} className='form-control'/>
-                                <button onClick={this.handleUpdate.bind(this)} className='btn btn-success'> Update </button>
-                                <button onClick={()=> this.handleDeleteElem.bind(this)('note')} className='btn btn-danger'> Delete </button>
+                                <textarea onChange={(e)=> this.handleInputChange.bind(this)(e, 'edit-text')} placeholder={this.state.note.text} value={this.state.value.edit.text} className='form-control'/>
+                                <button onClick={this.handleUpdate.bind(this)} className='btn'> Update </button>
+                                <button onClick={()=> this.handleDeleteElem.bind(this)('note')} className='btn'> Delete </button>
                             </div>)
                             // if note is hovered show it, otherwise show Info component
                             : this.state.note ?
@@ -191,14 +191,14 @@ class Main extends React.Component {
                     <ul className='list-inline mt-2'>
                         <li className='list-inline-item'>
                             <input
-                                className='form-control'
+                                className='form-control input-shadowed'
                                 onChange={(e)=> this.handleInputChange.bind(this)(e, 'note')} // using closure for passing params
                                 placeholder={'Add new note'}
                                 value={this.state.value.note.text} // value from state
                             />
                         </li>
                         <li className='list-inline-item'>
-                            <button onClick={()=> this.handleAddElem.bind(this)('note')} className='btn fa fa-plus'/>
+                            <button onClick={()=> this.handleAddElem.bind(this)('note')} className='btn-circled btn fa fa-plus'/>
                         </li>
                     </ul>
                 </section>
@@ -215,14 +215,14 @@ class Main extends React.Component {
                     <ul className='list-inline'>
                         <li className='list-inline-item'>
                             <input
-                                className='form-control'
+                                className='form-control input-shadowed'
                                 onChange={(e)=> this.handleInputChange.bind(this)(e, 'todo')} // using closure for passing params
                                 placeholder={'Add new todo'}
                                 value={this.state.value.todo.text} // value from state
                             />
                         </li>
                         <li className='list-inline-item'>
-                            <button onClick={()=> this.handleAddElem.bind(this)('todo')} className='btn fa fa-plus'/>
+                            <button onClick={()=> this.handleAddElem.bind(this)('todo')} className='btn-circled btn fa fa-plus'/>
                         </li>
                     </ul>
                 </section>

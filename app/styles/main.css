@@ -1,77 +1,142 @@
-.panel-todos {
-  background: rgba(255, 255, 255, 1)!important;
-  padding-top: 0!important;
-  /*background: rgba(255, 130, 0, .54)!important;*/
+.panel-current-nav {
+  font-size: 1rem;
+}
+.panel-current-display {
+  /*background: rgba(0, 0, 255, .54)!important;*/
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.34);
+  padding: 1rem;
+}
+.panel-current-display:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.34);
 }
 .panel-current {
   background: rgba(255, 255, 255, 1)!important;
   padding-bottom: 0!important;
 }
-.panel-current-nav li:first-of-type {
-  margin-left: .25rem;
-}
-.panel-current-nav {
-  font-size: .5rem;
-}
-.panel-current-display {
-  /*background: rgba(0, 0, 255, .54)!important;*/
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.34);
-  padding: 1rem;
-}
-.panel-current-display:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.34);
-}
+
 .panel-current-edit > textarea, .panel-current-edit > input {
-  margin: .5rem auto;
-  background: rgba(0, 0, 255, 0)!important;
+  border: none;
+  padding: 0 0!important;
 }
-.panel-current-edit > button {
+.panel-current-edit > textarea {
+  min-height: 7rem;
+  color: rgba(0, 50, 50, 0.87);
+  font-weight: 300;
+  font-size: 1.25rem;
+  margin-top: .5rem;
+  font-family: inherit;
 }
-textarea {
-  min-height: 8rem;
+.panel-current-edit > input {
+  color: rgba(0, 50, 50, 0.54);
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: inherit;
 }
 
 .panel-info {
   background: rgba(255, 255, 255, 1)!important;
 }
-.panel-notes {
+article > h1 {
+  color: rgba(0, 50, 50, 0.87);
+  font-weight: 600;
+  font-size: 2rem;
+}
+article > p {
+  color: rgba(0, 50, 50, 0.87);
+  font-weight: 300;
+  font-size: 1.25rem;
+}
+
+.panel-todos {
   background: rgba(255, 255, 255, 1)!important;
-  padding-bottom: 0!important;
+  padding-top: 0!important;
+  /*background: rgba(255, 130, 0, .54)!important;*/
 }
-.panel-notes-dates > * {
-  padding-left: .5rem;
+.panel-todos > table {
+  /*transition: box-shadow 1s;*/
 }
-.panel-notes-dates>*:first-child {
-  padding-left: 2rem;
-}
-.panel-notes-dates > * {
-  font-size: .4rem;
+.panel-todos >table:hover {
+  /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.34);*/
 }
 
 .elem:hover {
-  background-color: rgba(0, 255, 0, .34);
   cursor: pointer;
 }
+
+.elem-note {
+  color: rgba(0, 125, 125, .87);
+  font-weight: 400;
+  font-size: .75rem;
+}
 .elem-note:hover {
-  background-color: rgba(255, 150, 0, .34);
+  color: rgba(0, 200, 200, .87);
 }
-.elem-checked {
-  color: rgba(0, 255, 0, .54);
-}
-.elem-checked:hover {
-  background-color: rgba(0, 0, 0, .34);
-}
+
 .elem-edited {
   /*background-color: rgba(255, 150, 0, .54);*/
-  color: rgba(0, 0, 0, 0.34);
+  color: rgba(0, 200, 200, .87);
 }
 .elem-edited:hover {
   /*background-color: rgba(255, 150, 0, .54);*/
 }
 
-.button-delete {
-  color: rgba(255, 0, 0, .34);
+.elem-todo {
+  color: rgba(0, 50, 50, 0.87);
+  font-weight: 300;
+  transition: color .25s;
 }
-.button-delete:hover {
-  color: rgba(255, 0, 0, 1);
+.elem-todo:hover {
+  color: rgba(0, 125, 75, 0.87);
+}
+
+.elem-checked {
+  color: rgba(0, 125, 75, 0.87);
+  transition: color .25s;
+}
+.elem-checked:hover {
+  color: rgba(0, 50, 50, 0.87);
+}
+
+.fa-toggle-right {
+  margin-left: 1rem;
+}
+.fa-toggle-left {
+  margin-right: 1rem;
+}
+
+.note-date {
+  color: rgba(0, 50, 50, 0.54);
+  font-weight: 600;
+  font-size: 1rem;
+}
+.note-text {
+  color: rgba(0, 50, 50, 0.87);
+  font-weight: 300;
+  font-size: 1.25rem;
+}
+
+.fa, .btn {
+  color: rgba(0, 125, 125, .87);
+}
+.fa:hover, .btn:hover {
+  color: rgba(0, 200, 200, .87);
+}
+.btn {
+  background: none;
+}
+.btn-circled {
+  background: white;
+  border-radius: 2rem!important;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.34);
+  width: 3rem;
+  height: 3rem;
+}
+.btn-circled:hover {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.34);
+}
+.input-shadowed {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.34);
+  border: none!important;
 }

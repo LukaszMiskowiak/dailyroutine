@@ -9,7 +9,7 @@ import Main from '../containers/Main';
 class App extends React.Component {
     render() {
         return (
-            <div className='container-fluid col-sm-12 col-lg-8'>
+            <div className='container-fluid col-sm-12 col-lg-10 col-xl-8'>
                 <Main
                     notes={this.props.notes}
                     todos={this.props.todos}

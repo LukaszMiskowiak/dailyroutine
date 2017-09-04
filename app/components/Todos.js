@@ -4,12 +4,12 @@ const Todos = (props)=> (
     <table className='table'>
         <tbody>
             {props.todos && props.todos.map((elem, i)=> (
-                <tr key={i}>
-                    <td
-                        onMouseOver={()=> props.handleCurrent(i)}
-                        className={'elem ' + (elem.checked && 'elem-checked')}
-                        onClick={()=> props.handleCheck(i)}
-                    >
+                <tr
+                    onMouseOver={()=> props.handleCurrent(i)}
+                    key={i}
+                    className={'elem elem-todo text-justify ' + (elem.checked && 'elem-checked')}
+                >
+                    <td onClick={()=> props.handleCheck(i)}>
                         {elem.text}
                     </td>
                     {
