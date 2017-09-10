@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loadTodos, checkTodo, deleteTodo, addTodo } from '../actions/todos';
 import { loadNotes, addNote, deleteNote, updateNote} from '../actions/notes';
+import { addToast, removeToast} from '../actions/toasts';
 import Info from '../components/Info';
 import crud from '../scripts/crud';
 import Main from '../containers/Main';
+import Toasts from '../containers/Toasts';
 
 class App extends React.Component {
     render() {
@@ -21,6 +23,11 @@ class App extends React.Component {
                     handleAddNote={this.props.addNote}
                     handleDeleteNote={this.props.deleteNote}
                     handleUpdateNote={this.props.updateNote}
+                    handleAddToast={this.props.addToast}
+                />
+                <Toasts
+                    handleRemoveToast={this.props.removeToast}
+                    toasts={this.props.toasts}
                 />
             </div>
         );
@@ -33,7 +40,8 @@ class App extends React.Component {
 const mapStateToProps = (state)=> {
         return {
             notes: state.notes,
-            todos: state.todos
+            todos: state.todos,
+            toasts: state.toasts
         };
     },
     mapDispatchToProps = (dispatch)=> {
@@ -61,6 +69,12 @@ const mapStateToProps = (state)=> {
             },
             addTodo: (todo)=> {
                 dispatch(addTodo(todo));
+            },
+            addToast: (message)=> {
+                dispatch(addToast(message));
+            },
+            removeToast: ()=> {
+                dispatch(removeToast());
             }
         };
     };

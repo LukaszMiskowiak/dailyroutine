@@ -102,18 +102,21 @@ class Main extends React.Component {
     // delete elem from database and from store aswell
     handleDeleteElem(type) {
         let id = this.state[type].id,
-            index = this.props[type + 's'].indexOf(this.state[type]);
+            index = this.props[type + 's'].indexOf(this.state[type]),
+            message = type + ' deleted';
 
         type === 'note' && this.state.edit && this.setState({edit: false});
         // save to database and to store
         crud.delete(type, id);
         this.props['handleDelete' + type.capitalize()](index); // handleDeleteNote || handleDeleteTodo
+        this.props.handleAddToast(message);
     }
 
     // add elem to database and to store aswell
     handleAddElem(type) {
         let elem = {},
-            id = this.props[type + 's'].length ? (this.props[type + 's'][this.props[type + 's'].length - 1].id + 1) : 1; // find id of last elem and add 1 to it
+            id = this.props[type + 's'].length ? (this.props[type + 's'][this.props[type + 's'].length - 1].id + 1) : 1, // find id of last elem and add 1 to it
+            message = type + ' added';
 
         elem.text = this.state.value[type].text;
         // todo does not have date
@@ -125,6 +128,7 @@ class Main extends React.Component {
         // save to database and to store
         crud.create(type, elem.text);
         this.props['handleAdd' + type.capitalize()](elem);
+        this.props.handleAddToast(message);
     }
 
     // save input value to state.value
@@ -145,7 +149,8 @@ class Main extends React.Component {
     // update edited note elem
     handleUpdate() {
         let payload = {}, // payload is an obj with old note object (current one) and the new one (edited one)
-            id = this.state.note.id;
+            id = this.state.note.id,
+            message = 'note updated';
         payload.old = this.state.note;
         payload.new = this.state.note;
         // getting values from inputs
@@ -156,11 +161,12 @@ class Main extends React.Component {
         // Redux dispatch update and database update
         this.props.handleUpdateNote(payload);
         crud.update('note', id, payload.new.text);
+        this.props.handleAddToast(message);
     }
 
     render() {
         return (
-            <div className='row' onMouseLeave={()=> this.handleMouseOut.bind(this)('note')}>
+            <div className='row'>
                 <section className='panel-current col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2  jumbotron'>
                     <Notes
                         notes={this.props.notes}
@@ -173,6 +179,7 @@ class Main extends React.Component {
                     />
                     <div className='panel-current-display col-sm-12' onClick={this.handleEdit.bind(this)}>
                         {/* if edit is trigerred show it */}
+                        <div className='panel-current-display-top-gradient'/>
                         {this.state.edit ?
                             (<div className='col-sm-12 panel-current-edit'>
                                 <input onChange={(e)=> this.handleInputChange.bind(this)(e, 'edit-date')} placeholder={this.state.note.text} value={this.state.value.edit.date} className='form-control'/>
