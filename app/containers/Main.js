@@ -137,9 +137,9 @@ class Main extends React.Component {
             state = this.state.value;
         // update state with value of input
         type === 'edit-text' ? // edit panel first input
-        state.edit.text = value
+            state.edit.text = value
             : type === 'edit-date' ? // edit panel second input
-            state.edit.date = value
+                state.edit.date = value
                 : state[type].text = value; // add new todo/note input
         // saving data from inputs to state
         this.setState({
